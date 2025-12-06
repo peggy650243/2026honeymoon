@@ -1,0 +1,5 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 如果您有其他的全域 CSS，可以加在下面 */
