@@ -1,7 +1,94 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Camera, MapPin, Clock, Coffee, Utensils, Moon, Sun, ChevronDown, Heart, Share2, Navigation, Anchor, Plane, Palmtree, Beer, ShoppingBag, Info, Train, Calculator, CalendarDays, ArrowRightLeft, Delete, Ticket, ListTodo, Plus, X, CheckCircle2, Circle, Menu, Sparkles, CloudRain, CloudSun, CloudLightning, WifiOff, TrainFront, Thermometer, Wind, Droplets, Cloud, Calendar, Umbrella, Car, Search, UtensilsCrossed } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Camera, MapPin, Clock, Coffee, Utensils, Moon, Sun, ChevronDown, Heart, Share2, Navigation, Anchor, Plane, Palmtree, Beer, ShoppingBag, Info, Train, Calculator, CalendarDays, ArrowRightLeft, Delete, Ticket, ListTodo, Plus, X, CheckCircle2, Circle, Menu, Sparkles, CloudRain, CloudSun, CloudLightning, WifiOff, TrainFront, Thermometer, Wind, Droplets, Cloud, Calendar, Umbrella, Car, Search, UtensilsCrossed, AlertCircle, Clapperboard } from 'lucide-react';
 
-// --- 1. 資料定義 ---
+// --- 1. 資料定義 (Data) ---
+
+const SINGAPORE_FOODS = [
+  {
+    id: 1,
+    name: "海南雞飯",
+    originalName: "Hainanese Chicken Rice",
+    image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=1000&auto=format&fit=crop",
+    desc: "新加坡國菜，嫩滑白斬雞配上香氣十足的雞油飯。"
+  },
+  {
+    id: 2,
+    name: "叻沙",
+    originalName: "Laksa",
+    image: "https://images.unsplash.com/photo-1548943487-a2e4e43b485c?q=80&w=1000&auto=format&fit=crop",
+    desc: "濃郁椰奶與香料熬製的湯頭，搭配粗米粉與鮮蝦。"
+  },
+  {
+    id: 3,
+    name: "辣椒螃蟹",
+    originalName: "Chili Crab",
+    image: "https://images.unsplash.com/photo-1555547639-6555198d003a?q=80&w=1000&auto=format&fit=crop",
+    desc: "酸甜微辣的醬汁，搭配炸饅頭是絕配。"
+  },
+  {
+    id: 4,
+    name: "沙嗲",
+    originalName: "Satay",
+    image: "https://images.unsplash.com/photo-1552590635-27c2c2128abf?q=80&w=1000&auto=format&fit=crop",
+    desc: "炭烤肉串（雞/牛/羊），蘸上濃郁的花生醬。"
+  },
+  {
+    id: 5,
+    name: "肉骨茶",
+    originalName: "Bak Kut Teh",
+    image: "https://images.unsplash.com/photo-1623963229729-195679dc6e46?q=80&w=1000&auto=format&fit=crop",
+    desc: "新加坡式通常為胡椒味較重的潮州派系，湯頭清澈辛辣。"
+  },
+  {
+    id: 6,
+    name: "咖椰吐司",
+    originalName: "Kaya Toast",
+    image: "https://images.unsplash.com/photo-1626264696010-39e248a3f769?q=80&w=1000&auto=format&fit=crop",
+    desc: "酥脆吐司夾上椰香咖椰醬與牛油，配半熟蛋與咖啡。"
+  },
+  {
+    id: 7,
+    name: "印度煎餅",
+    originalName: "Roti Prata",
+    image: "https://images.unsplash.com/photo-1626809714836-7936647971e9?q=80&w=1000&auto=format&fit=crop",
+    desc: "外酥內軟的印度薄餅，可沾咖哩吃或加蛋、起司。"
+  },
+  {
+    id: 8,
+    name: "椰漿飯",
+    originalName: "Nasi Lemak",
+    image: "https://images.unsplash.com/photo-1626117637860-612c3f56999a?q=80&w=1000&auto=format&fit=crop",
+    desc: "椰奶烹煮的香飯，配上參巴醬、花生小魚乾與炸雞。"
+  },
+  {
+    id: 9,
+    name: "炒粿條",
+    originalName: "Char Kway Teow",
+    image: "https://images.unsplash.com/photo-1632733979607-422204c3db73?q=80&w=1000&auto=format&fit=crop",
+    desc: "大火快炒的扁麵條，加入黑醬油、血蛤、臘腸，鑊氣十足。"
+  },
+  {
+    id: 10,
+    name: "福建麵",
+    originalName: "Hokkien Mee",
+    image: "https://images.unsplash.com/photo-1644309325990-2c7003460677?q=80&w=1000&auto=format&fit=crop",
+    desc: "黃麵與米粉混合，以濃郁蝦湯燜煮，配上參巴辣椒。"
+  },
+  {
+    id: 11,
+    name: "炒蘿蔔糕",
+    originalName: "Chai Tow Kway",
+    image: "https://images.unsplash.com/photo-1605333202937-29929d29759c?q=80&w=1000&auto=format&fit=crop",
+    desc: "分為「黑」（加甜醬油）與「白」（原味加蛋）兩種風味。"
+  },
+  {
+    id: 12,
+    name: "紅豆冰",
+    originalName: "Ice Kacang",
+    image: "https://images.unsplash.com/photo-1563583597-9a489243763f?q=80&w=1000&auto=format&fit=crop",
+    desc: "色彩繽紛的刨冰，底部藏有紅豆、果凍、玉米等配料。"
+  }
+];
 
 const TRIP_DATA = {
   title: "新加坡 Singapore",
@@ -13,11 +100,11 @@ const TRIP_DATA = {
       date: "2026/03/31 (二)",
       theme: "星耀獅城與璀璨夜景",
       items: [
-        {
-          time: "05:30",
-          title: "桃園機場 T2 報到",
-          type: "transport",
-          desc: "星宇航空貴賓室享受早餐，準備開啟美好旅程。",
+        { 
+          time: "05:30", 
+          title: "桃園機場 T2 報到", 
+          type: "transport", 
+          desc: "星宇航空貴賓室享受早餐，準備開啟美好旅程。", 
           icon: "plane",
           details: {
             info: "起飛前 2.5 小時開櫃",
@@ -25,23 +112,23 @@ const TRIP_DATA = {
             tips: "記得預留時間安檢，貴賓室位於 D6 登機門旁"
           }
         },
-        {
-          time: "08:00 - 12:40",
-          title: "飛往新加坡 (Starlux)",
-          type: "transport",
-          desc: "搭乘星宇航空前往樟宜機場，享受高空飛行時光。",
+        { 
+          time: "08:00 - 12:40", 
+          title: "飛往新加坡 (Starlux)", 
+          type: "transport", 
+          desc: "搭乘星宇航空前往樟宜機場，享受高空飛行時光。", 
           icon: "plane",
           details: {
-            info: "航班 JX771",
+            info: "航班 JX771", 
             location: "Singapore Changi Airport",
             tips: "機上提供免費 Wi-Fi (文字訊息)，記得先申請會員"
           }
         },
-        {
-          time: "14:00",
-          title: "飯店 Check-in：Carlton Hotel",
-          type: "stay",
-          desc: "抵達飯店辦理入住，位於 City Hall 精華地段，交通便利。",
+        { 
+          time: "14:00", 
+          title: "飯店 Check-in：Carlton Hotel", 
+          type: "stay", 
+          desc: "抵達飯店辦理入住，位於 City Hall 精華地段，交通便利。", 
           icon: "hotel",
           details: {
             info: "入住時間: 15:00 後",
@@ -50,11 +137,11 @@ const TRIP_DATA = {
             tips: "對面就是 CHIJMES 讚美廣場，晚上氣氛很好"
           }
         },
-        {
-          time: "16:00 - 17:30",
-          title: "Merlion Park (魚尾獅公園)",
-          type: "activity",
-          desc: "與經典魚尾獅地標合影，欣賞濱海灣美景。",
+        { 
+          time: "16:00 - 17:30", 
+          title: "Merlion Park (魚尾獅公園)", 
+          type: "activity", 
+          desc: "與經典魚尾獅地標合影，欣賞濱海灣美景。", 
           details: {
             info: "活動: 拍照留念",
             location: "Merlion Park",
@@ -62,11 +149,11 @@ const TRIP_DATA = {
             tips: "建議在 17:00 前抵達，光線較適合拍照"
           }
         },
-        {
-          time: "17:30 - 19:15",
-          title: "晚餐：Jypsy One Fullerton",
-          type: "food",
-          desc: "享用現代日式料理，就在魚尾獅旁。",
+        { 
+          time: "17:30 - 19:15", 
+          title: "晚餐：Jypsy One Fullerton", 
+          type: "food", 
+          desc: "享用現代日式料理，就在魚尾獅旁。", 
           icon: "utensils",
           details: {
             info: "訂位 17:30，用餐 1.5-2 小時",
@@ -75,11 +162,11 @@ const TRIP_DATA = {
             tips: "戶外座位可欣賞金沙景色，氛圍極佳"
           }
         },
-        {
-          time: "19:15 - 19:45",
-          title: "散步：濱海灣至金沙",
-          type: "walk",
-          desc: "經 Jubilee Bridge & Helix Bridge，沿途欣賞極美夜景。",
+        { 
+          time: "19:15 - 19:45", 
+          title: "散步：濱海灣至金沙", 
+          type: "walk", 
+          desc: "經 Jubilee Bridge & Helix Bridge，沿途欣賞極美夜景。", 
           details: {
             info: "移動時間: 約 20-30 分鐘",
             location: "Jubilee Bridge to Helix Bridge",
@@ -87,11 +174,11 @@ const TRIP_DATA = {
             tips: "沿途夜景極美，適合拍照"
           }
         },
-        {
-          time: "19:45 - 20:00",
-          title: "抵達水舞秀廣場",
-          type: "map-pin",
-          desc: "前往金沙 Event Plaza 尋找前排位置。",
+        { 
+          time: "19:45 - 20:00", 
+          title: "抵達水舞秀廣場", 
+          type: "map-pin", 
+          desc: "前往金沙 Event Plaza 尋找前排位置。", 
           details: {
             info: "地點: 戶外活動廣場",
             location: "Marina Bay Sands Event Plaza",
@@ -99,11 +186,11 @@ const TRIP_DATA = {
             tips: "人潮眾多，建議提早卡位"
           }
         },
-        {
-          time: "20:00 - 20:15",
-          title: "Spectra - Light & Water Show",
-          type: "activity",
-          desc: "觀賞第一場震撼的聲光水舞秀。",
+        { 
+          time: "20:00 - 20:15", 
+          title: "Spectra - Light & Water Show", 
+          type: "activity", 
+          desc: "觀賞第一場震撼的聲光水舞秀。", 
           icon: "camera",
           details: {
             info: "費用: 免費 (場次 20:00 & 21:00)",
@@ -112,12 +199,12 @@ const TRIP_DATA = {
             tips: "建議坐在木棧道階梯視野最佳"
           }
         },
-        {
-          time: "20:15 - 21:30",
-          title: "金沙購物中心 / 賭場",
-          type: "shop",
-          desc: "自由活動，探索 The Shoppes at MBS。",
-          icon: "shopping",
+        { 
+          time: "20:15 - 21:30", 
+          title: "金沙購物中心 / 賭場", 
+          type: "shop", 
+          desc: "自由活動，探索 The Shoppes at MBS。", 
+          icon: "shopping", 
           details: {
             info: "活動: 逛街 / 參觀",
             location: "The Shoppes at Marina Bay Sands",
@@ -132,11 +219,11 @@ const TRIP_DATA = {
       date: "2026/04/01 (三)",
       theme: "花園城市與在地美食",
       items: [
-        {
-          time: "09:00",
-          title: "喜園咖啡店 YY Kafei Dian",
-          type: "food",
-          desc: "享用道地的新加坡早餐，必點咖椰麵包與海南咖啡。",
+        { 
+          time: "09:00", 
+          title: "喜園咖啡店 YY Kafei Dian", 
+          type: "food", 
+          desc: "享用道地的新加坡早餐，必點咖椰麵包與海南咖啡。", 
           icon: "coffee",
           details: {
             info: "營業時間: 07:30 - 19:00",
@@ -145,11 +232,11 @@ const TRIP_DATA = {
             tips: "推薦點口感鬆軟的「太空包」(Kaya Bun) 配半熟蛋"
           }
         },
-        {
-          time: "11:00",
-          title: "新加坡鴨子船 Ducktours",
-          type: "activity",
-          desc: "於 Suntec City Mall 搭乘水陸兩棲車，從河上探索城市風光。",
+        { 
+          time: "11:00", 
+          title: "新加坡鴨子船 Ducktours", 
+          type: "activity", 
+          desc: "於 Suntec City Mall 搭乘水陸兩棲車，從河上探索城市風光。", 
           details: {
             info: "營業時間: 10:00 - 18:00",
             location: "Suntec City Mall",
@@ -157,11 +244,11 @@ const TRIP_DATA = {
             tips: "已預約，請提早 30 分鐘報到兌換票券"
           }
         },
-        {
-          time: "12:00",
-          title: "松發肉骨茶 Song Fa",
-          type: "food",
-          desc: "午餐享用米其林推薦的胡椒風味肉骨茶。",
+        { 
+          time: "12:00", 
+          title: "松發肉骨茶 Song Fa", 
+          type: "food", 
+          desc: "午餐享用米其林推薦的胡椒風味肉骨茶。", 
           icon: "utensils",
           details: {
             info: "營業時間: 09:00 - 21:15",
@@ -169,11 +256,11 @@ const TRIP_DATA = {
             tips: "湯可以無限續加，推薦搭配油條"
           }
         },
-        {
-          time: "14:00 - 17:30",
-          title: "濱海灣花園 Gardens by the Bay",
-          type: "activity",
-          desc: "漫步於未來感十足的超級樹與溫室花園。",
+        { 
+          time: "14:00 - 17:30", 
+          title: "濱海灣花園 Gardens by the Bay", 
+          type: "activity", 
+          desc: "漫步於未來感十足的超級樹與溫室花園。", 
           details: {
             info: "溫室: 09:00 - 21:00",
             location: "Gardens by the Bay",
@@ -181,11 +268,11 @@ const TRIP_DATA = {
             tips: "冷室(Cloud Forest)溫度較低，建議帶薄外套"
           }
         },
-        {
-          time: "17:30 - 19:30",
-          title: "Satay by the Bay",
-          type: "food",
-          desc: "在花園旁享用晚餐，延續熱帶夜晚的美味。",
+        { 
+          time: "17:30 - 19:30", 
+          title: "Satay by the Bay", 
+          type: "food", 
+          desc: "在花園旁享用晚餐，延續熱帶夜晚的美味。", 
           icon: "utensils",
           details: {
             info: "營業時間: 11:00 - 22:00",
@@ -194,11 +281,11 @@ const TRIP_DATA = {
             tips: "除了沙嗲，這裡的烤雞翅和魔鬼魚也很受歡迎"
           }
         },
-        {
-          time: "19:45",
-          title: "Garden Rhapsody 花園狂想曲",
-          type: "activity",
-          desc: "欣賞超級樹 (Supertrees) 隨著音樂變換燈光的魔幻時刻。",
+        { 
+          time: "19:45", 
+          title: "Garden Rhapsody 花園狂想曲", 
+          type: "activity", 
+          desc: "欣賞超級樹 (Supertrees) 隨著音樂變換燈光的魔幻時刻。", 
           icon: "moon",
           details: {
             info: "場次: 19:45 / 20:45",
@@ -206,11 +293,11 @@ const TRIP_DATA = {
             tips: "免費欣賞，躺在樹下的石椅上觀賞體驗最佳"
           }
         },
-        {
-          time: "21:00",
-          title: "Nutmeg & Clove",
-          type: "beer",
-          desc: "亞洲 50 大酒吧，品嚐融入新加坡歷史與香料元素的特色調酒。",
+        { 
+          time: "21:00", 
+          title: "Nutmeg & Clove", 
+          type: "beer", 
+          desc: "亞洲 50 大酒吧，品嚐融入新加坡歷史與香料元素的特色調酒。", 
           icon: "beer",
           details: {
             info: "營業時間: 17:00 - 00:00",
@@ -226,11 +313,11 @@ const TRIP_DATA = {
       date: "2026/04/02 (四)",
       theme: "色彩巷弄與遊輪啟航",
       items: [
-        {
-          time: "09:00",
-          title: "Blanco Court Prawn Mee",
-          type: "food",
-          desc: "在地人也愛的白蘭閣街蝦麵，湯頭濃郁鮮甜。",
+        { 
+          time: "09:00", 
+          title: "Blanco Court Prawn Mee", 
+          type: "food", 
+          desc: "在地人也愛的白蘭閣街蝦麵，湯頭濃郁鮮甜。", 
           icon: "utensils",
           details: {
             info: "營業時間: 07:00 - 16:00 (週二公休)",
@@ -239,11 +326,11 @@ const TRIP_DATA = {
             tips: "建議點排骨蝦麵，可以免費續湯"
           }
         },
-        {
-          time: "10:00",
-          title: "甘榜格南 & 哈芝巷",
-          type: "walk",
-          desc: "Kampong Glam 欣賞蘇丹回教堂，漫步於色彩繽紛的 Haji Lane 塗鴉牆。",
+        { 
+          time: "10:00", 
+          title: "甘榜格南 & 哈芝巷", 
+          type: "walk", 
+          desc: "Kampong Glam 欣賞蘇丹回教堂，漫步於色彩繽紛的 Haji Lane 塗鴉牆。", 
           details: {
             info: "建議停留: 1.5 - 2 小時",
             location: "Kampong Glam & Haji Lane",
@@ -251,11 +338,11 @@ const TRIP_DATA = {
             tips: "必拍景點：1. 蘇丹回教堂 (金色圓頂) 2. 哈芝巷 (色彩繽紛塗鴉牆) 3. 巴索拉街 (Bussorah St. 棕櫚樹街景) 4. 阿拉伯街 (異國風情布店)"
           }
         },
-        {
-          time: "11:30",
-          title: "前往郵輪碼頭",
-          type: "transport",
-          desc: "收拾行囊，移動至濱海灣郵輪中心。",
+        { 
+          time: "11:30", 
+          title: "前往郵輪碼頭", 
+          type: "transport", 
+          desc: "收拾行囊，移動至濱海灣郵輪中心。", 
           icon: "car",
           details: {
             info: "目的地: Marina Bay Cruise Centre",
@@ -264,11 +351,11 @@ const TRIP_DATA = {
             tips: "預計車資約 SGD 20-30 (視時段與車型而定)。行李多建議叫 6 人座。"
           }
         },
-        {
-          time: "13:00",
-          title: "迪士尼遊輪登船手續",
-          type: "activity",
-          desc: "辦理 Check-in，準備登上夢幻的迪士尼遊輪！",
+        { 
+          time: "13:00", 
+          title: "迪士尼遊輪登船手續", 
+          type: "activity", 
+          desc: "辦理 Check-in，準備登上夢幻的迪士尼遊輪！", 
           icon: "anchor",
           details: {
             info: "必備: 護照、船票(APP)",
@@ -280,6 +367,104 @@ const TRIP_DATA = {
     },
     {
       id: 4,
+      date: "2026/04/03 - 05 (海上)",
+      theme: "迪士尼探險號 Disney Adventure",
+      items: [
+        {
+          time: "登船日",
+          title: "Muster Drill 救生演習",
+          type: "info",
+          desc: "新式 E-Muster：先在 APP 看安全影片，再前往集合點掃描房卡。",
+          icon: "info",
+          details: {
+            info: "必要性: 強制參加 (Mandatory)",
+            location: "APP 指定集合點 (Assembly Station)",
+            transport: "步行前往指定地點 (餐廳或戲院)。",
+            tips: "⚠️ 務必在廣播「演習結束」前完成掃描。若沒去，廣播會直接點名唸出您的名字，全船都會聽到，非常尷尬！"
+          }
+        },
+        {
+          time: "登船日 13:00",
+          title: "Dining Changes 餐廳調整",
+          type: "utensils",
+          desc: "若輪替名單沒有您想去的餐廳，可把握這段時間去更換。",
+          icon: "utensils",
+          details: {
+            info: "服務時間: 登船日下午 (約 13:00-15:00)",
+            location: "Dining Enquiries (查閱 APP 或紙本導覽)",
+            transport: "通常位於其中一間主餐廳或大廳。",
+            tips: "直接找 Head Waiter (餐廳經理)，告知：「我們非常想要體驗 Pixar Market Restaurant，請問能幫我們調整輪替順序嗎？」"
+          }
+        },
+        {
+          time: "每日行程", 
+          title: "一般見面會 (Standard Greetings)",
+          type: "camera",
+          desc: "免費且免預約的角色合照機會，記得提早排隊。",
+          icon: "camera",
+          details: {
+            info: "規則: 不用預約，先到先排",
+            location: "查閱 Navigator App (如 Wayfinder Bay)",
+            transport: "依據 APP 指示前往。",
+            tips: "每個時段通常只有 15-20 分鐘，若人潮太多會提早「截龍」，建議提早 15-20 分鐘到現場。"
+          }
+        },
+        {
+          time: "隨時", 
+          title: "地毯是指南針 🧭",
+          type: "navigation",
+          desc: "迷路了嗎？看地毯圖案方向就能分辨船頭船尾。",
+          icon: "navigation",
+          details: {
+            info: "口訣: 圖案正直=船頭，圖案倒立=船尾",
+            location: "客房走廊",
+            transport: "低頭看地毯。",
+            tips: "通常圖案是星星、地圖或米奇頭，尖端或正面朝向船頭 (Forward)。"
+          }
+        },
+        {
+          time: "24H", 
+          title: "隱藏菜單：米奇雪糕 🍦",
+          type: "utensils",
+          desc: "Room Service 必點！免費無限享用的米奇巧克力脆皮雪糕。",
+          icon: "utensils",
+          details: {
+            info: "費用: 餐點免費，建議給小費 (USD 1-2)",
+            location: "Room Service (客房服務)",
+            transport: "打電話到客房服務點餐。",
+            tips: "Mickey Premium Ice Cream Bar 在樂園一支要好幾塊美金，船上無限吃！適合玩累了在房間穿睡衣吃。"
+          }
+        },
+        {
+          time: "查閱 APP",
+          title: "海上院線片 🎬",
+          type: "movie",
+          desc: "與美國同步上映最新的迪士尼/漫威電影，完全免費。",
+          icon: "clapperboard",
+          details: {
+            info: "地點: Buena Vista Theatre",
+            location: "Buena Vista Theatre",
+            transport: "依據甲板圖前往電影院。",
+            tips: "2026年4月是春季檔期，有機會搶先看到最新的漫威或皮克斯電影 (通常還有 3D 版)！"
+          }
+        },
+        {
+          time: "最後一晚",
+          title: "下船行李標籤",
+          type: "ticket",
+          desc: "依照房務員給的角色標籤 (如 Tinker Bell) 聽廣播分批下船。",
+          icon: "ticket",
+          details: {
+            info: "截止時間: 最後一晚 22:00 前需將行李放門口",
+            location: "房門口走廊",
+            transport: "船員協助搬運大行李下船。",
+            tips: "廣播會通知：「持有 XX 標籤的旅客現在可以下船了」。請依照您的角色標籤行動，不要提早去擠。"
+          }
+        }
+      ]
+    },
+    {
+      id: 5,
       date: "2026/04/06 (一)",
       theme: "重返陸地與海鮮盛宴",
       items: [
@@ -296,14 +481,14 @@ const TRIP_DATA = {
           }
         },
         {
-          time: "11:30",
-          title: "飯店 Check-in：The Robertson House",
-          type: "stay",
-          desc: "入住 The Crest Collection 系列精品酒店，充滿殖民地風情。",
+          time: "11:30", 
+          title: "飯店 Check-in：The Robertson House", 
+          type: "stay", 
+          desc: "入住 The Crest Collection 系列精品酒店，充滿殖民地風情。", 
           icon: "hotel",
           details: {
             info: "入住時間: 15:00",
-            location: "The Robertson House (1 Unity St)",
+            location: "The Robertson House (1 Unity St)", 
             transport: "搭乘 Grab 或計程車前往飯店。",
             tips: "預計車資約 SGD 20-30。可先寄放行李，輕裝前往吃午餐"
           }
@@ -311,7 +496,7 @@ const TRIP_DATA = {
         {
           time: "12:30",
           title: "Maxwell 熟食中心",
-          type: "food",
+          type: "food", 
           desc: "午餐：朝聖著名的天天海南雞飯或其他在地小吃。",
           details: {
             info: "營業時間: 08:00 - 02:00",
@@ -323,7 +508,7 @@ const TRIP_DATA = {
         {
           time: "14:30",
           title: "牛車水文化漫步",
-          type: "activity",
+          type: "activity", 
           desc: "參觀佛牙寺龍華院與馬里安曼興都廟，感受多元信仰文化。",
           icon: "camera",
           details: {
@@ -336,7 +521,7 @@ const TRIP_DATA = {
         {
           time: "18:00",
           title: "珍寶海鮮 Jumbo Seafood",
-          type: "food",
+          type: "food", 
           desc: "晚餐：享受新加坡國菜「辣椒螃蟹」的吮指美味。",
           details: {
             info: "營業時間: 11:30-14:30 / 17:30-22:30",
@@ -360,7 +545,7 @@ const TRIP_DATA = {
       ]
     },
     {
-      id: 5,
+      id: 6,
       date: "2026/04/07 (二)",
       theme: "聖淘沙陽光與魔法",
       items: [
@@ -455,7 +640,7 @@ const TRIP_DATA = {
       ]
     },
     {
-      id: 6,
+      id: 7,
       date: "2026/04/08 (三)",
       theme: "再見獅城 · 星耀樟宜",
       items: [
@@ -525,101 +710,15 @@ const TRIP_DATA = {
   ]
 };
 
-const SINGAPORE_FOODS = [
-  {
-    id: 1,
-    name: "海南雞飯",
-    originalName: "Hainanese Chicken Rice",
-    image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=1000&auto=format&fit=crop",
-    desc: "新加坡國菜，嫩滑白斬雞配上香氣十足的雞油飯。"
-  },
-  {
-    id: 2,
-    name: "叻沙",
-    originalName: "Laksa",
-    image: "https://images.unsplash.com/photo-1548943487-a2e4e43b485c?q=80&w=1000&auto=format&fit=crop",
-    desc: "濃郁椰奶與香料熬製的湯頭，搭配粗米粉與鮮蝦。"
-  },
-  {
-    id: 3,
-    name: "辣椒螃蟹",
-    originalName: "Chili Crab",
-    image: "https://images.unsplash.com/photo-1555547639-6555198d003a?q=80&w=1000&auto=format&fit=crop",
-    desc: "酸甜微辣的醬汁，搭配炸饅頭是絕配。"
-  },
-  {
-    id: 4,
-    name: "沙嗲",
-    originalName: "Satay",
-    image: "https://images.unsplash.com/photo-1552590635-27c2c2128abf?q=80&w=1000&auto=format&fit=crop",
-    desc: "炭烤肉串（雞/牛/羊），蘸上濃郁的花生醬。"
-  },
-  {
-    id: 5,
-    name: "肉骨茶",
-    originalName: "Bak Kut Teh",
-    image: "https://images.unsplash.com/photo-1623963229729-195679dc6e46?q=80&w=1000&auto=format&fit=crop",
-    desc: "新加坡式通常為胡椒味較重的潮州派系，湯頭清澈辛辣。"
-  },
-  {
-    id: 6,
-    name: "咖椰吐司",
-    originalName: "Kaya Toast",
-    image: "https://images.unsplash.com/photo-1626264696010-39e248a3f769?q=80&w=1000&auto=format&fit=crop",
-    desc: "酥脆吐司夾上椰香咖椰醬與牛油，配半熟蛋與咖啡。"
-  },
-  {
-    id: 7,
-    name: "印度煎餅",
-    originalName: "Roti Prata",
-    image: "https://images.unsplash.com/photo-1626809714836-7936647971e9?q=80&w=1000&auto=format&fit=crop",
-    desc: "外酥內軟的印度薄餅，可沾咖哩吃或加蛋、起司。"
-  },
-  {
-    id: 8,
-    name: "椰漿飯",
-    originalName: "Nasi Lemak",
-    image: "https://images.unsplash.com/photo-1626117637860-612c3f56999a?q=80&w=1000&auto=format&fit=crop",
-    desc: "椰奶烹煮的香飯，配上參巴醬、花生小魚乾與炸雞。"
-  },
-  {
-    id: 9,
-    name: "炒粿條",
-    originalName: "Char Kway Teow",
-    image: "https://images.unsplash.com/photo-1632733979607-422204c3db73?q=80&w=1000&auto=format&fit=crop",
-    desc: "大火快炒的扁麵條，加入黑醬油、血蛤、臘腸，鑊氣十足。"
-  },
-  {
-    id: 10,
-    name: "福建麵",
-    originalName: "Hokkien Mee",
-    image: "https://images.unsplash.com/photo-1644309325990-2c7003460677?q=80&w=1000&auto=format&fit=crop",
-    desc: "黃麵與米粉混合，以濃郁蝦湯燜煮，配上參巴辣椒。"
-  },
-  {
-    id: 11,
-    name: "炒蘿蔔糕",
-    originalName: "Chai Tow Kway",
-    image: "https://images.unsplash.com/photo-1605333202937-29929d29759c?q=80&w=1000&auto=format&fit=crop",
-    desc: "分為「黑」（加甜醬油）與「白」（原味加蛋）兩種風味。"
-  },
-  {
-    id: 12,
-    name: "紅豆冰",
-    originalName: "Ice Kacang",
-    image: "https://images.unsplash.com/photo-1563583597-9a489243763f?q=80&w=1000&auto=format&fit=crop",
-    desc: "色彩繽紛的刨冰，底部藏有紅豆、果凍、玉米等配料。"
-  }
-];
+// --- 2. 輔助元件 (Helper Components) ---
 
-// --- 2. 輔助元件 ---
-
+// Icon 元件
 const IconWrapper = ({ type }) => {
   const className = "w-5 h-5 text-white";
   switch (type) {
     case 'food': return <Utensils className={className} />;
     case 'stay': return <Moon className={className} />;
-    case 'transport': return <Plane className={className} />;
+    case 'transport': return <Plane className={className} />; 
     case 'navigation': return <Navigation className={className} />;
     case 'break': return <Coffee className={className} />;
     case 'camera': return <Camera className={className} />;
@@ -628,11 +727,15 @@ const IconWrapper = ({ type }) => {
     case 'beer': return <Beer className={className} />;
     case 'shop': return <ShoppingBag className={className} />;
     case 'ticket': return <Ticket className={className} />;
-    case 'car': return <Car className={className} />;
+    case 'car': return <Car className={className} />; 
+    case 'info': return <Info className={className} />;
+    case 'utensils': return <Utensils className={className} />;
+    case 'movie': return <Clapperboard className={className} />;
     default: return <MapPin className={className} />;
   }
 };
 
+// 行程卡片元件
 const TimelineItem = ({ item, isLast }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -641,43 +744,46 @@ const TimelineItem = ({ item, isLast }) => {
       {!isLast && (
         <div className="absolute left-[11px] top-8 bottom-0 w-[2px] bg-gradient-to-b from-white/40 to-transparent group-hover:from-emerald-300/60 transition-colors duration-500"></div>
       )}
-
+      
       <div className="absolute left-0 top-2 w-6 h-6 rounded-full bg-white/10 backdrop-blur-md border border-white/30 flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.2)] group-hover:scale-110 group-hover:bg-emerald-400/20 group-hover:border-emerald-400 transition-all duration-300 z-10">
         <div className={`w-2 h-2 rounded-full transition-colors ${isOpen ? 'bg-emerald-300' : 'bg-white group-hover:bg-emerald-300'}`}></div>
       </div>
 
-      <div
+      <div 
         onClick={() => setIsOpen(!isOpen)}
         className={`backdrop-blur-lg border rounded-2xl p-5 cursor-pointer transition-all duration-300 ${
-            isOpen
-            ? 'bg-white/20 border-emerald-400/50 shadow-[0_0_20px_rgba(52,211,153,0.1)]'
+            isOpen 
+            ? 'bg-white/20 border-emerald-400/50 shadow-[0_0_20px_rgba(52,211,153,0.1)]' 
             : 'bg-white/10 border-white/20 hover:bg-white/20 hover:border-white/40 hover:-translate-y-1'
         }`}
       >
         <div className="flex justify-between items-start mb-2">
           <div className="flex items-center space-x-2 text-emerald-200 font-mono text-sm tracking-wider">
-            <Clock className="w-4 h-4" />
+            {item.time !== "登船日" && item.time !== "最後一晚" && <Clock className="w-4 h-4" />}
             <span>{item.time}</span>
           </div>
           <div className="flex items-center gap-2">
             <div className={`p-2 rounded-full ${
-                item.type === 'food' ? 'bg-orange-400/20' :
-                item.type === 'anchor' ? 'bg-indigo-400/30' :
+                item.type === 'food' ? 'bg-orange-400/20' : 
+                item.type === 'anchor' ? 'bg-indigo-400/30' : 
                 item.type === 'beer' ? 'bg-yellow-400/20' :
                 item.type === 'sun' ? 'bg-sky-400/20' :
                 item.type === 'ticket' ? 'bg-pink-400/20' :
-                item.type === 'car' ? 'bg-cyan-400/20' :
+                item.type === 'car' ? 'bg-cyan-400/20' : 
+                item.type === 'info' ? 'bg-red-400/20' :
+                item.type === 'utensils' ? 'bg-orange-400/20' :
+                item.type === 'movie' ? 'bg-purple-400/20' :
                 'bg-blue-400/20'}`}>
                 <IconWrapper type={item.type} />
             </div>
             <ChevronDown className={`w-4 h-4 text-white/50 transition-transform duration-300 ${isOpen ? 'rotate-180 text-emerald-300' : ''}`} />
           </div>
         </div>
-
+        
         <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
         <p className="text-gray-200 text-sm leading-relaxed mb-1">{item.desc}</p>
 
-        <div
+        <div 
             className={`grid transition-all duration-500 ease-in-out ${
                 isOpen ? 'grid-rows-[1fr] opacity-100 mt-4 pt-4 border-t border-white/10' : 'grid-rows-[0fr] opacity-0 mt-0 pt-0'
             }`}
@@ -685,33 +791,27 @@ const TimelineItem = ({ item, isLast }) => {
             <div className="min-h-0 overflow-hidden">
                 {item.details && (
                     <div className="grid gap-4 text-sm">
+                        {item.details.info && (
                         <div className="flex items-start gap-3">
-                            <Clock className="w-4 h-4 text-emerald-300 mt-0.5 shrink-0" />
+                            <AlertCircle className="w-4 h-4 text-emerald-300 mt-0.5 shrink-0" />
                             <div>
-                                <span className="block text-emerald-200 text-xs uppercase tracking-wider mb-0.5">營業/時間</span>
+                                <span className="block text-emerald-200 text-xs uppercase tracking-wider mb-0.5">重要資訊</span>
                                 <span className="text-gray-200">{item.details.info}</span>
                             </div>
                         </div>
+                        )}
 
+                        {item.details.location && (
                         <div className="flex items-start gap-3">
                             <MapPin className="w-4 h-4 text-emerald-300 mt-0.5 shrink-0" />
                             <div className="flex-1">
                                 <span className="block text-emerald-200 text-xs uppercase tracking-wider mb-0.5">位置</span>
                                 <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
                                     <span className="text-gray-200">{item.details.location}</span>
-                                    <a
-                                        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.title + " " + item.details.location)}`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        onClick={(e) => e.stopPropagation()}
-                                        className="flex items-center gap-1 px-2 py-1 rounded-md bg-emerald-400/10 hover:bg-emerald-400/20 text-emerald-300 text-xs transition-colors border border-emerald-400/20"
-                                    >
-                                        <MapPin className="w-3 h-3" />
-                                        <span>地圖</span>
-                                    </a>
                                 </div>
                             </div>
                         </div>
+                        )}
 
                         {item.details.transport && (
                             <div className="flex items-start gap-3">
@@ -723,6 +823,7 @@ const TimelineItem = ({ item, isLast }) => {
                             </div>
                         )}
 
+                        {item.details.tips && (
                         <div className="flex items-start gap-3">
                             <Info className="w-4 h-4 text-emerald-300 mt-0.5 shrink-0" />
                             <div>
@@ -730,6 +831,7 @@ const TimelineItem = ({ item, isLast }) => {
                                 <span className="text-gray-200">{item.details.tips}</span>
                             </div>
                         </div>
+                        )}
                     </div>
                 )}
             </div>
@@ -739,6 +841,7 @@ const TimelineItem = ({ item, isLast }) => {
   );
 };
 
+// 頁首元件
 const PageHeader = ({ title, subtitle, icon: Icon, coverImage, isMain = false }) => {
   return (
     <div className={`relative w-full flex items-center justify-center overflow-hidden ${isMain ? 'h-[30vh] md:h-[45vh]' : 'h-[20vh] md:h-[30vh]'}`}>
@@ -754,7 +857,7 @@ const PageHeader = ({ title, subtitle, icon: Icon, coverImage, isMain = false })
            </div>
         )}
         <div className={`flex items-center justify-center gap-3 ${isMain ? 'mb-2' : 'mb-1'}`}>
-            {Icon && <Icon className="w-6 h-6 text-emerald-300" />}
+            {Icon && <Icon className="w-6 h-6 text-emerald-300" />} 
             <h1 className={`${isMain ? 'text-3xl md:text-5xl' : 'text-2xl md:text-3xl'} font-bold text-white tracking-tight drop-shadow-xl`}>
               {title}
             </h1>
@@ -767,6 +870,9 @@ const PageHeader = ({ title, subtitle, icon: Icon, coverImage, isMain = false })
   );
 };
 
+// --- 3. 功能頁面元件 (Feature Components) ---
+
+// 匯率計算機
 const CurrencyConverter = ({ coverImage }) => {
   const [sgd, setSgd] = useState(() => localStorage.getItem('calc_sgd') || '');
   const [ntd, setNtd] = useState(() => localStorage.getItem('calc_ntd') || '');
@@ -810,11 +916,11 @@ const CurrencyConverter = ({ coverImage }) => {
 
   return (
     <div className="flex flex-col animate-fade-in-up">
-        <PageHeader
-            title="匯率計算機"
-            subtitle="1 SGD ≈ 23 NTD"
-            icon={Calculator}
-            coverImage={coverImage}
+        <PageHeader 
+            title="匯率計算機" 
+            subtitle="1 SGD ≈ 23 NTD" 
+            icon={Calculator} 
+            coverImage={coverImage} 
         />
 
         <div className="flex-1 p-6 flex flex-col items-center">
@@ -825,8 +931,8 @@ const CurrencyConverter = ({ coverImage }) => {
                         <label className="block text-emerald-300 text-sm font-bold tracking-widest mb-2">SGD 新加坡幣</label>
                         <div className="flex items-baseline">
                             <span className="text-2xl text-white/50 mr-2">$</span>
-                            <input
-                                type="text"
+                            <input 
+                                type="text" 
                                 inputMode="decimal"
                                 placeholder="0.00"
                                 value={sgd}
@@ -849,8 +955,8 @@ const CurrencyConverter = ({ coverImage }) => {
                         <label className="block text-blue-300 text-sm font-bold tracking-widest mb-2">NTD 新台幣</label>
                         <div className="flex items-baseline">
                             <span className="text-2xl text-white/50 mr-2">$</span>
-                            <input
-                                type="text"
+                            <input 
+                                type="text" 
                                 inputMode="numeric"
                                 placeholder="0"
                                 value={ntd}
@@ -862,14 +968,14 @@ const CurrencyConverter = ({ coverImage }) => {
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 pt-4">
-                    <button
+                    <button 
                         onClick={clearAll}
                         className="flex items-center justify-center space-x-2 py-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-gray-400 transition-all active:scale-95"
                     >
                         <Delete className="w-5 h-5" />
                         <span>清除</span>
                     </button>
-                    <button
+                    <button 
                         onClick={() => {
                             const current = parseFloat(sgd) || 0;
                             const newVal = current + 10;
@@ -887,6 +993,7 @@ const CurrencyConverter = ({ coverImage }) => {
   );
 };
 
+// 行前清單
 const PackingList = ({ coverImage }) => {
     const defaultItems = [
         { id: 1, text: "護照 (效期6個月以上)", checked: false, category: "必備" },
@@ -911,7 +1018,7 @@ const PackingList = ({ coverImage }) => {
     }, [items]);
 
     const toggleItem = (id) => {
-        setItems(items.map(item =>
+        setItems(items.map(item => 
             item.id === id ? { ...item, checked: !item.checked } : item
         ));
     };
@@ -921,16 +1028,16 @@ const PackingList = ({ coverImage }) => {
 
     return (
         <div className="flex flex-col animate-fade-in-up">
-            <PageHeader
-                title="行前清單"
-                subtitle="Packing List"
-                icon={ListTodo}
-                coverImage={coverImage}
+            <PageHeader 
+                title="行前清單" 
+                subtitle="Packing List" 
+                icon={ListTodo} 
+                coverImage={coverImage} 
             />
 
             <div className="flex-1 p-6 max-w-lg mx-auto w-full">
                 <div className="mb-8 bg-white/10 rounded-full h-4 overflow-hidden border border-white/10 relative">
-                    <div
+                    <div 
                         className="bg-gradient-to-r from-emerald-500 to-teal-500 h-full transition-all duration-500 ease-out"
                         style={{ width: `${progress}%` }}
                     ></div>
@@ -943,12 +1050,12 @@ const PackingList = ({ coverImage }) => {
                             <h3 className="text-sm font-bold text-gray-400 mb-3 ml-1 uppercase tracking-wider">{category}</h3>
                             <div className="space-y-2">
                                 {items.filter(i => i.category === category).map(item => (
-                                    <div
+                                    <div 
                                         key={item.id}
                                         onClick={() => toggleItem(item.id)}
                                         className={`flex items-center p-4 rounded-xl border transition-all cursor-pointer ${
-                                            item.checked
-                                            ? 'bg-emerald-500/10 border-emerald-500/30'
+                                            item.checked 
+                                            ? 'bg-emerald-500/10 border-emerald-500/30' 
                                             : 'bg-white/5 border-white/10 hover:bg-white/10'
                                         }`}
                                     >
@@ -969,6 +1076,7 @@ const PackingList = ({ coverImage }) => {
     );
 };
 
+// 即時天氣
 const LiveWeather = ({ coverImage }) => {
     const [currentWeather, setCurrentWeather] = useState(null);
     const [hourlyForecast, setHourlyForecast] = useState(null);
@@ -981,7 +1089,7 @@ const LiveWeather = ({ coverImage }) => {
         if (code <= 3) return { icon: CloudSun, label: "多雲", color: "text-gray-300" };
         if (code <= 48) return { icon: Cloud, label: "陰天", color: "text-gray-400" };
         if (code <= 67) return { icon: CloudRain, label: "雨天", color: "text-blue-400" };
-        if (code <= 77) return { icon: Cloud, label: "降雪", color: "text-white" };
+        if (code <= 77) return { icon: Cloud, label: "降雪", color: "text-white" }; 
         if (code <= 82) return { icon: CloudRain, label: "陣雨", color: "text-blue-300" };
         if (code <= 99) return { icon: CloudLightning, label: "雷雨", color: "text-purple-400" };
         return { icon: Cloud, label: "未知", color: "text-gray-400" };
@@ -998,13 +1106,13 @@ const LiveWeather = ({ coverImage }) => {
                 const response = await fetch(
                     'https://api.open-meteo.com/v1/forecast?latitude=1.3521&longitude=103.8198&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,weather_code,wind_speed_10m&hourly=temperature_2m,weather_code,precipitation_probability&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FSingapore&forecast_days=3'
                 );
-
+                
                 if (!response.ok) throw new Error('無法取得天氣資料');
-
+                
                 const data = await response.json();
                 setCurrentWeather(data.current);
                 setForecast(data.daily);
-
+                
                 const currentHour = new Date().getHours();
                 const next24Hours = data.hourly.time.slice(currentHour, currentHour + 24).map((time, index) => {
                     const originalIndex = currentHour + index;
@@ -1032,11 +1140,11 @@ const LiveWeather = ({ coverImage }) => {
 
     return (
         <div className="flex flex-col animate-fade-in-up">
-            <PageHeader
-                title="即時天氣"
-                subtitle="Live Weather in Singapore"
-                icon={CloudSun}
-                coverImage={coverImage}
+            <PageHeader 
+                title="即時天氣" 
+                subtitle="Live Weather in Singapore" 
+                icon={CloudSun} 
+                coverImage={coverImage} 
             />
 
             <div className="flex-1 p-6 flex flex-col items-center justify-start min-h-[70vh] pb-24">
@@ -1065,7 +1173,7 @@ const LiveWeather = ({ coverImage }) => {
                                 <div className={`p-6 rounded-full bg-white/5 mb-6 ${wInfo.color}`}>
                                     <Icon className="w-20 h-20 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]" />
                                 </div>
-
+                                
                                 <h2 className="text-6xl font-bold text-white mb-2 tracking-tighter">
                                     {Math.round(currentWeather.temperature_2m)}°
                                 </h2>
@@ -1105,7 +1213,7 @@ const LiveWeather = ({ coverImage }) => {
                                                 <span className="text-xs text-gray-300 mb-2">{hour.time}</span>
                                                 <HIcon className={`w-6 h-6 mb-2 ${hInfo.color}`} />
                                                 <span className="text-sm font-bold text-white mb-1">{Math.round(hour.temp)}°</span>
-
+                                                
                                                 <div className="flex items-center space-x-1">
                                                     <Umbrella className={`w-3 h-3 ${isRainy ? 'text-blue-300' : 'text-gray-600'}`} />
                                                     <span className={`text-[10px] ${isRainy ? 'text-blue-300 font-bold' : 'text-gray-600'}`}>
@@ -1122,8 +1230,8 @@ const LiveWeather = ({ coverImage }) => {
                         {forecast && (
                             <div className="space-y-3">
                                 <h3 className="text-white/70 text-sm font-bold uppercase tracking-widest pl-2 mb-2">未來預報</h3>
-                                {forecast.time.slice(1, 3).map((date, index) => {
-                                    const i = index + 1;
+                                {forecast.time.slice(1, 3).map((date, index) => { 
+                                    const i = index + 1; 
                                     const fInfo = getWeatherIcon(forecast.weather_code[i]);
                                     const FIcon = fInfo.icon;
 
@@ -1138,7 +1246,7 @@ const LiveWeather = ({ coverImage }) => {
                                                     <span className="text-xs text-gray-400">{formatDate(date)}</span>
                                                 </div>
                                             </div>
-
+                                            
                                             <div className="flex flex-col items-end">
                                                 <div className="flex items-center space-x-2 text-white">
                                                     <span className="font-bold">{Math.round(forecast.temperature_2m_max[i])}°</span>
@@ -1152,7 +1260,7 @@ const LiveWeather = ({ coverImage }) => {
                                 })}
                             </div>
                         )}
-
+                        
                         <p className="text-center text-xs text-gray-500 font-mono pt-4">
                             Data provided by Open-Meteo API
                         </p>
@@ -1163,21 +1271,22 @@ const LiveWeather = ({ coverImage }) => {
     );
 };
 
+// 美食圖鑑
 const FoodGuide = ({ coverImage }) => {
     const [searchTerm, setSearchTerm] = useState('');
-
-    const filteredFoods = SINGAPORE_FOODS.filter(food =>
-        food.name.includes(searchTerm) ||
+    
+    const filteredFoods = SINGAPORE_FOODS.filter(food => 
+        food.name.includes(searchTerm) || 
         food.originalName.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     return (
         <div className="flex flex-col animate-fade-in-up">
-            <PageHeader
-                title="美食圖鑑"
-                subtitle="Food Guide"
-                icon={UtensilsCrossed}
-                coverImage={coverImage}
+            <PageHeader 
+                title="美食圖鑑" 
+                subtitle="Food Guide" 
+                icon={UtensilsCrossed} 
+                coverImage={coverImage} 
             />
 
             <div className="flex-1 p-6 pb-24">
@@ -1198,9 +1307,9 @@ const FoodGuide = ({ coverImage }) => {
                     {filteredFoods.map(food => (
                         <div key={food.id} className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-300 shadow-xl group">
                             <div className="h-48 w-full overflow-hidden relative">
-                                <img
-                                    src={food.image}
-                                    alt={food.name}
+                                <img 
+                                    src={food.image} 
+                                    alt={food.name} 
                                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
@@ -1214,7 +1323,7 @@ const FoodGuide = ({ coverImage }) => {
                             </div>
                         </div>
                     ))}
-
+                    
                     {filteredFoods.length === 0 && (
                         <div className="col-span-full text-center py-10 text-gray-400">
                             <p>找不到符合的美食... 😅</p>
@@ -1227,6 +1336,9 @@ const FoodGuide = ({ coverImage }) => {
     );
 };
 
+// --- 4. 介面元件 (Layout) ---
+
+// 日期切換列
 const DaySelector = ({ days, activeDay, setActiveDay }) => {
   return (
     <div className="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-xl border-b border-white/10 py-2 px-2 overflow-x-auto no-scrollbar">
@@ -1251,12 +1363,13 @@ const DaySelector = ({ days, activeDay, setActiveDay }) => {
   );
 };
 
+// 多功能選單 (FAB)
 const FabMenu = ({ currentView, setView }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const menuItems = [
         { id: 'itinerary', icon: CalendarDays, label: "行程", color: "bg-emerald-500" },
-        { id: 'food-guide', icon: UtensilsCrossed, label: "美食", color: "bg-red-500" },
+        { id: 'food-guide', icon: UtensilsCrossed, label: "美食", color: "bg-red-500" }, 
         { id: 'calculator', icon: Calculator, label: "匯率", color: "bg-blue-500" },
         { id: 'weather', icon: CloudSun, label: "天氣", color: "bg-orange-500" },
         { id: 'packing', icon: ListTodo, label: "清單", color: "bg-purple-500" },
@@ -1294,11 +1407,13 @@ const FabMenu = ({ currentView, setView }) => {
     );
 };
 
+// --- 5. 主程式 ---
+
 export default function App() {
   const [activeDay, setActiveDay] = useState(1);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [view, setView] = useState('itinerary');
-  const [isOffline, setIsOffline] = useState(!navigator.onLine);
+  const [view, setView] = useState('itinerary'); 
+  const [isOffline, setIsOffline] = useState(!navigator.onLine); 
 
   const currentDayData = TRIP_DATA.days.find(d => d.id === activeDay);
 
@@ -1306,7 +1421,7 @@ export default function App() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-
+    
     const handleOnline = () => setIsOffline(false);
     const handleOffline = () => setIsOffline(true);
 
@@ -1327,24 +1442,24 @@ export default function App() {
               return <CurrencyConverter coverImage={TRIP_DATA.coverImage} />;
           case 'packing':
               return <PackingList coverImage={TRIP_DATA.coverImage} />;
-          case 'weather':
+          case 'weather': 
               return <LiveWeather coverImage={TRIP_DATA.coverImage} />;
-          case 'food-guide':
+          case 'food-guide': 
               return <FoodGuide coverImage={TRIP_DATA.coverImage} />;
           default:
               return (
                 <>
-                    <PageHeader
-                        title={TRIP_DATA.title}
-                        subtitle={TRIP_DATA.subtitle}
-                        coverImage={TRIP_DATA.coverImage}
+                    <PageHeader 
+                        title={TRIP_DATA.title} 
+                        subtitle={TRIP_DATA.subtitle} 
+                        coverImage={TRIP_DATA.coverImage} 
                         isMain={true}
                     />
 
-                    <DaySelector
-                        days={TRIP_DATA.days}
-                        activeDay={activeDay}
-                        setActiveDay={setActiveDay}
+                    <DaySelector 
+                        days={TRIP_DATA.days} 
+                        activeDay={activeDay} 
+                        setActiveDay={setActiveDay} 
                     />
 
                     <div className="relative z-10 max-w-3xl mx-auto px-6 py-12 min-h-[50vh]">
@@ -1357,14 +1472,14 @@ export default function App() {
 
                             <div className="space-y-2">
                                 {currentDayData.items.map((item, index) => (
-                                    <TimelineItem
-                                        key={index}
-                                        item={item}
-                                        isLast={index === currentDayData.items.length - 1}
+                                    <TimelineItem 
+                                        key={index} 
+                                        item={item} 
+                                        isLast={index === currentDayData.items.length - 1} 
                                     />
                                 ))}
                             </div>
-
+                            
                             <div className="mt-12 text-center pb-24">
                                 <p className="text-gray-500 text-sm italic">
                                     {activeDay === 6 ? "Home Sweet Home!" : activeDay === 3 ? "Next Stop: The High Seas!" : "旅途的意義，在於發現未知的自己。"}
@@ -1398,7 +1513,7 @@ export default function App() {
         <FabMenu currentView={view} setView={setView} />
 
         {renderContent()}
-
+      
       <style>{`
         @keyframes fadeInUps {
           from { opacity: 0; transform: translateY(20px); }
