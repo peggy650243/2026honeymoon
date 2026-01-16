@@ -8,85 +8,106 @@ const SINGAPORE_FOODS = [
     id: 1,
     name: "海南雞飯",
     originalName: "Hainanese Chicken Rice",
-    image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=1000&auto=format&fit=crop",
+    image: "https://github.com/peggy650243/2026honeymoon/blob/main/img/Chicken_Rice.png?raw=true",
     desc: "新加坡國菜，嫩滑白斬雞配上香氣十足的雞油飯。"
   },
   {
     id: 2,
     name: "叻沙",
     originalName: "Laksa",
-    image: "https://images.unsplash.com/photo-1548943487-a2e4e43b485c?q=80&w=1000&auto=format&fit=crop",
+    image: "https://github.com/peggy650243/2026honeymoon/blob/main/img/Laksa.png?raw=true",
     desc: "濃郁椰奶與香料熬製的湯頭，搭配粗米粉與鮮蝦。"
   },
   {
     id: 3,
     name: "辣椒螃蟹",
     originalName: "Chili Crab",
-    image: "https://images.unsplash.com/photo-1555547639-6555198d003a?q=80&w=1000&auto=format&fit=crop",
+    image: "https://github.com/peggy650243/2026honeymoon/blob/main/img/Chili_Crab.png?raw=true",
     desc: "酸甜微辣的醬汁，搭配炸饅頭是絕配。"
   },
   {
     id: 4,
     name: "沙嗲",
     originalName: "Satay",
-    image: "https://images.unsplash.com/photo-1552590635-27c2c2128abf?q=80&w=1000&auto=format&fit=crop",
+    image: "https://github.com/peggy650243/2026honeymoon/blob/main/img/Satay.png?raw=true",
     desc: "炭烤肉串（雞/牛/羊），蘸上濃郁的花生醬。"
   },
   {
     id: 5,
     name: "肉骨茶",
     originalName: "Bak Kut Teh",
-    image: "https://images.unsplash.com/photo-1623963229729-195679dc6e46?q=80&w=1000&auto=format&fit=crop",
+    image: "https://github.com/peggy650243/2026honeymoon/blob/main/img/Bak_Kut_Teh.png?raw=true",
     desc: "新加坡式通常為胡椒味較重的潮州派系，湯頭清澈辛辣。"
   },
   {
     id: 6,
     name: "咖椰吐司",
     originalName: "Kaya Toast",
-    image: "https://images.unsplash.com/photo-1626264696010-39e248a3f769?q=80&w=1000&auto=format&fit=crop",
+    image: "https://github.com/peggy650243/2026honeymoon/blob/main/img/Kaya_Toast.png?raw=true",
     desc: "酥脆吐司夾上椰香咖椰醬與牛油，配半熟蛋與咖啡。"
   },
   {
     id: 7,
     name: "印度煎餅",
     originalName: "Roti Prata",
-    image: "https://images.unsplash.com/photo-1626809714836-7936647971e9?q=80&w=1000&auto=format&fit=crop",
+    image: "https://github.com/peggy650243/2026honeymoon/blob/main/img/Roti_Prata.png?raw=true",
     desc: "外酥內軟的印度薄餅，可沾咖哩吃或加蛋、起司。"
   },
   {
     id: 8,
     name: "椰漿飯",
     originalName: "Nasi Lemak",
-    image: "https://images.unsplash.com/photo-1626117637860-612c3f56999a?q=80&w=1000&auto=format&fit=crop",
+    image: "https://github.com/peggy650243/2026honeymoon/blob/main/img/Nasi_Lemak.png?raw=true",
     desc: "椰奶烹煮的香飯，配上參巴醬、花生小魚乾與炸雞。"
   },
   {
     id: 9,
     name: "炒粿條",
     originalName: "Char Kway Teow",
-    image: "https://images.unsplash.com/photo-1632733979607-422204c3db73?q=80&w=1000&auto=format&fit=crop",
+    image: "https://github.com/peggy650243/2026honeymoon/blob/main/img/Char_Kway_Teow.png?raw=true",
     desc: "大火快炒的扁麵條，加入黑醬油、血蛤、臘腸，鑊氣十足。"
   },
   {
     id: 10,
     name: "福建麵",
     originalName: "Hokkien Mee",
-    image: "https://images.unsplash.com/photo-1644309325990-2c7003460677?q=80&w=1000&auto=format&fit=crop",
+    image: "https://github.com/peggy650243/2026honeymoon/blob/main/img/Hokkien_Mee.png?raw=true",
     desc: "黃麵與米粉混合，以濃郁蝦湯燜煮，配上參巴辣椒。"
   },
   {
     id: 11,
     name: "炒蘿蔔糕",
     originalName: "Chai Tow Kway",
-    image: "https://images.unsplash.com/photo-1605333202937-29929d29759c?q=80&w=1000&auto=format&fit=crop",
+    image: "https://github.com/peggy650243/2026honeymoon/blob/main/img/Chai_Tow_Kway.png?raw=true",
     desc: "分為「黑」（加甜醬油）與「白」（原味加蛋）兩種風味。"
   },
   {
     id: 12,
     name: "紅豆冰",
     originalName: "Ice Kacang",
-    image: "https://images.unsplash.com/photo-1563583597-9a489243763f?q=80&w=1000&auto=format&fit=crop",
+    image: "https://github.com/peggy650243/2026honeymoon/blob/main/img/Ice_Kacang.png?raw=true",
     desc: "色彩繽紛的刨冰，底部藏有紅豆、果凍、玉米等配料。"
+  },
+  {
+    id: 13,
+    name: "煎蕊",
+    originalName: "Cendol",
+    image: "https://github.com/peggy650243/2026honeymoon/blob/main/img/Cendol.png?raw=true",
+    desc: "經典南洋甜品，綠色斑蘭粉條配上椰奶、椰糖與紅豆，香甜消暑。"
+  },
+  {
+    id: 14,
+    name: "羅惹",
+    originalName: "Rojak",
+    image: "https://github.com/peggy650243/2026honeymoon/blob/main/img/Rojak.png?raw=true",
+    desc: "蔬果與油條混合，淋上濃郁蝦醬與花生粉的獨特南洋沙拉。"
+  },
+  {
+    id: 15,
+    name: "米暹",
+    originalName: "Mee Siam",
+    image: "https://github.com/peggy650243/2026honeymoon/blob/main/img/Mee_Siam.png?raw=true",
+    desc: "酸辣開胃的細米粉，帶有獨特的豆醬香氣，常配水煮蛋。"
   }
 ];
 
@@ -601,15 +622,15 @@ const TRIP_DATA = {
         },
         {
           time: "14:00",
-          title: "Vivocity 大食代",
+          title: "Good Old Days 餐廳",
           type: "food",
-          desc: "午餐：在擁有復古裝潢的 Food Republic 享用午餐。",
+          desc: "午餐：在聖淘沙島上享用懷舊風味的亞洲美食自助餐。",
           icon: "utensils",
           details: {
-            info: "位置: VivoCity 3樓",
-            location: "Food Republic VivoCity",
-            transport: "搭乘 Sentosa Express 返回 VivoCity 站。",
-            tips: "裝潢很有 60 年代復古風，適合拍照"
+            info: "營業時間: 11:00 - 22:00",
+            location: "Good Old Days (Beach Station)",
+            transport: "位於 Beach Station 旁，搭乘 Sentosa Express 或海灘接駁車皆可抵達。",
+            tips: "二樓有冷氣座位，傍晚用餐可順便看時光之翼水舞秀場地。"
           }
         },
         {
@@ -759,7 +780,7 @@ const TimelineItem = ({ item, isLast }) => {
       >
         <div className="flex justify-between items-start mb-2">
           <div className="flex items-center space-x-2 text-emerald-200 font-mono text-sm tracking-wider">
-            {item.time !== "登船日" && item.time !== "最後一晚" && <Clock className="w-4 h-4" />}
+            {item.time !== "登船日" && item.time !== "最後一晚" && item.time !== "每日行程" && item.time !== "隨時" && item.time !== "24H" && item.time !== "查閱 APP" && <Clock className="w-4 h-4" />}
             <span>{item.time}</span>
           </div>
           <div className="flex items-center gap-2">
@@ -806,9 +827,16 @@ const TimelineItem = ({ item, isLast }) => {
                             <MapPin className="w-4 h-4 text-emerald-300 mt-0.5 shrink-0" />
                             <div className="flex-1">
                                 <span className="block text-emerald-200 text-xs uppercase tracking-wider mb-0.5">位置</span>
-                                <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-                                    <span className="text-gray-200">{item.details.location}</span>
-                                </div>
+                                <a 
+                                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.details.location)}`}
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    onClick={(e) => e.stopPropagation()} 
+                                    className="text-gray-200 hover:text-emerald-300 hover:underline decoration-emerald-300/50 underline-offset-4 transition-all"
+                                    title="點擊開啟 Google Maps"
+                                >
+                                    {item.details.location}
+                                </a>
                             </div>
                         </div>
                         )}
