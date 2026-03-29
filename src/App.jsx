@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Camera, MapPin, Clock, Coffee, Utensils, Moon, Sun, ChevronDown, Heart, Share2, Navigation, Anchor, Plane, Palmtree, Beer, ShoppingBag, Info, Train, Calculator, CalendarDays, ArrowRightLeft, Delete, Ticket, ListTodo, Plus, X, CheckCircle2, Circle, Menu, Sparkles, CloudRain, CloudSun, CloudLightning, WifiOff, TrainFront, Thermometer, Wind, Droplets, Cloud, Calendar, Umbrella, Car, Search, UtensilsCrossed, AlertCircle, Clapperboard } from 'lucide-react';
 
 // --- 1. 資料定義 (Data) ---
@@ -159,6 +159,18 @@ const TRIP_DATA = {
           }
         },
         { 
+          time: "15:00 - 15:45", 
+          title: "The Arcade 換匯", 
+          type: "shop", 
+          desc: "前往萊佛士坊的 The Arcade 商業中心，這裡匯集了多家匯率優良的換錢所。", 
+          details: {
+            info: "活動: 比較匯率並換取 SGD",
+            location: "The Arcade, 11 Collyer Quay",
+            transport: "從政府大廈站 (City Hall, EW13) 搭乘紅/綠線一站至萊佛士坊站 (Raffles Place, EW14)，C 出口出站步行即可抵達。",
+            tips: "通常 1 樓或 2 樓的匯率較佳，建議多比價幾家。記得攜帶台幣現金！"
+          }
+        },
+        { 
           time: "16:00 - 17:30", 
           title: "Merlion Park (魚尾獅公園)", 
           type: "activity", 
@@ -166,7 +178,7 @@ const TRIP_DATA = {
           details: {
             info: "活動: 拍照留念",
             location: "Merlion Park",
-            transport: "從飯店步行至政府大廈站，搭乘紅線/綠線一站至 萊佛士坊站 (Raffles Place, EW14)，H 出口步行約 5 分鐘。亦可直接散步前往約 15-20 分鐘。",
+            transport: "從 The Arcade 步行至魚尾獅公園約 5-8 分鐘即可抵達。",
             tips: "建議在 17:00 前抵達，光線較適合拍照"
           }
         },
@@ -832,7 +844,7 @@ const TimelineItem = ({ item, isLast }) => {
                                     target="_blank" 
                                     rel="noopener noreferrer"
                                     onClick={(e) => e.stopPropagation()} 
-                                    className="text-gray-200 hover:text-emerald-300 hover:underline decoration-emerald-300/50 underline-offset-4 transition-all"
+                                    className="text-gray-200 hover:text-emerald-300 hover:underline decoration-emerald-300/50 underline-offset-4 transition-all block mt-0.5"
                                     title="點擊開啟 Google Maps"
                                 >
                                     {item.details.location}
