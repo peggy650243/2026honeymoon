@@ -129,7 +129,7 @@ const TRIP_DATA = {
           icon: "plane",
           details: {
             info: "起飛前 2.5 小時開櫃",
-            location: "桃園機場第二航廈 3F 出境大廳",
+            location: "桃園機場第二航廈",
             tips: "記得預留時間安檢，貴賓室位於 D6 登機門旁"
           }
         },
@@ -153,7 +153,7 @@ const TRIP_DATA = {
           icon: "hotel",
           details: {
             info: "入住時間: 15:00 後",
-            location: "Carlton Hotel Singapore (76 Bras Basah Rd)",
+            location: "Carlton Hotel Singapore",
             transport: "從機場站 (CG2) 搭乘東西線 (綠線) 至丹那美拉站 (EW4)，同月台換乘市區方向列車，至政府大廈站 (City Hall, EW13) 下車，步行約 5 分鐘即達。",
             tips: "對面就是 CHIJMES 讚美廣場，晚上氣氛很好"
           }
@@ -165,7 +165,7 @@ const TRIP_DATA = {
           desc: "前往萊佛士坊的 The Arcade 商業中心，這裡匯集了多家匯率優良的換錢所。", 
           details: {
             info: "活動: 比較匯率並換取 SGD",
-            location: "The Arcade, 11 Collyer Quay",
+            location: "The Arcade Money Changer",
             transport: "從政府大廈站 (City Hall, EW13) 搭乘紅/綠線一站至萊佛士坊站 (Raffles Place, EW14)，C 出口出站步行即可抵達。",
             tips: "通常 1 樓或 2 樓的匯率較佳，建議多比價幾家。記得攜帶台幣現金！"
           }
@@ -190,7 +190,7 @@ const TRIP_DATA = {
           icon: "utensils",
           details: {
             info: "訂位 17:30，用餐 1.5-2 小時",
-            location: "One Fullerton 1F",
+            location: "Jypsy One Fullerton",
             transport: "就在魚尾獅公園旁，步行即達。",
             tips: "戶外座位可欣賞金沙景色，氛圍極佳"
           }
@@ -202,7 +202,7 @@ const TRIP_DATA = {
           desc: "經 Jubilee Bridge & Helix Bridge，沿途欣賞極美夜景。", 
           details: {
             info: "移動時間: 約 20-30 分鐘",
-            location: "Jubilee Bridge to Helix Bridge",
+            location: "Marina Bay Sands Event Plaza",
             transport: "沿著濱海灣散步道步行前往金沙。",
             tips: "沿途夜景極美，適合拍照"
           }
@@ -227,7 +227,7 @@ const TRIP_DATA = {
           icon: "camera",
           details: {
             info: "費用: 免費 (場次 20:00 & 21:00)",
-            location: "Event Plaza",
+            location: "Marina Bay Sands Event Plaza",
             transport: "已抵達現場。",
             tips: "建議坐在木棧道階梯視野最佳"
           }
@@ -260,7 +260,7 @@ const TRIP_DATA = {
           icon: "coffee",
           details: {
             info: "營業時間: 07:30 - 19:00",
-            location: "37 Beach Rd, #01-01",
+            location: "YY Kafei Dian 喜園咖啡店",
             transport: "從 Carlton Hotel 步行約 3-5 分鐘即達 (就在隔壁街區)。",
             tips: "推薦點口感鬆軟的「太空包」(Kaya Bun) 配半熟蛋"
           }
@@ -272,7 +272,7 @@ const TRIP_DATA = {
           desc: "於 Suntec City Mall 搭乘水陸兩棲車，從河上探索城市風光。", 
           details: {
             info: "營業時間: 10:00 - 18:00",
-            location: "Suntec City Mall",
+            location: "Suntec City Ducktours",
             transport: "從喜園咖啡店步行至 Suntec City 約 10 分鐘，或穿過 Raffles City 地下街。",
             tips: "已預約，請提早 30 分鐘報到兌換票券"
           }
@@ -334,7 +334,7 @@ const TRIP_DATA = {
           icon: "beer",
           details: {
             info: "營業時間: 17:00 - 00:00",
-            location: "8 Purvis St",
+            location: "Nutmeg & Clove",
             transport: "從海灣舫站 (Bayfront, DT16) 搭乘藍線至 武吉士站 (Bugis, DT14)，C 出口步行約 5 分鐘。",
             tips: "強烈建議事先訂位，推薦嘗試他們以新加坡歷史時期命名的調酒"
           }
@@ -354,7 +354,7 @@ const TRIP_DATA = {
           icon: "utensils",
           details: {
             info: "營業時間: 07:00 - 16:00 (週二公休)",
-            location: "243 Beach Rd, #01-01",
+            location: "Blanco Court Prawn Mee 白蘭閣街蝦麵",
             transport: "從 Carlton Hotel 步行約 10 分鐘，或搭乘公車。",
             tips: "建議點排骨蝦麵，可以免費續湯"
           }
@@ -366,7 +366,7 @@ const TRIP_DATA = {
           desc: "Kampong Glam 欣賞蘇丹回教堂，漫步於色彩繽紛的 Haji Lane 塗鴉牆。", 
           details: {
             info: "建議停留: 1.5 - 2 小時",
-            location: "Kampong Glam & Haji Lane",
+            location: "Haji Lane",
             transport: "從蝦麵店步行約 3-5 分鐘即可抵達哈芝巷。",
             tips: "必拍景點：1. 蘇丹回教堂 (金色圓頂) 2. 哈芝巷 (色彩繽紛塗鴉牆) 3. 巴索拉街 (Bussorah St. 棕櫚樹街景) 4. 阿拉伯街 (異國風情布店)"
           }
@@ -392,7 +392,7 @@ const TRIP_DATA = {
           icon: "anchor",
           details: {
             info: "必備: 護照、船票(APP)",
-            location: "Marina Bay Cruise Centre Arrival",
+            location: "Marina Bay Cruise Centre",
             tips: "記得先下載 Disney Cruise Line APP"
           }
         }
@@ -411,7 +411,7 @@ const TRIP_DATA = {
           icon: "info",
           details: {
             info: "必要性: 強制參加 (Mandatory)",
-            location: "APP 指定集合點 (Assembly Station)",
+            location: "Marina Bay Cruise Centre",
             transport: "步行前往指定地點 (餐廳或戲院)。",
             tips: "⚠️ 務必在廣播「演習結束」前完成掃描。若沒去，廣播會直接點名唸出您的名字，全船都會聽到，非常尷尬！"
           }
@@ -424,7 +424,7 @@ const TRIP_DATA = {
           icon: "utensils",
           details: {
             info: "服務時間: 登船日下午 (約 13:00-15:00)",
-            location: "Dining Enquiries (查閱 APP 或紙本導覽)",
+            location: "Marina Bay Cruise Centre",
             transport: "通常位於其中一間主餐廳或大廳。",
             tips: "直接找 Head Waiter (餐廳經理)，告知：「我們非常想要體驗 Pixar Market Restaurant，請問能幫我們調整輪替順序嗎？」"
           }
@@ -437,7 +437,7 @@ const TRIP_DATA = {
           icon: "camera",
           details: {
             info: "規則: 不用預約，先到先排",
-            location: "查閱 Navigator App (如 Wayfinder Bay)",
+            location: "Disney Cruise Navigator APP",
             transport: "依據 APP 指示前往。",
             tips: "每個時段通常只有 15-20 分鐘，若人潮太多會提早「截龍」，建議提早 15-20 分鐘到現場。"
           }
@@ -450,7 +450,7 @@ const TRIP_DATA = {
           icon: "navigation",
           details: {
             info: "口訣: 圖案正直=船頭，圖案倒立=船尾",
-            location: "客房走廊",
+            location: "Disney Cruise Stateroom Hallway",
             transport: "低頭看地毯。",
             tips: "通常圖案是星星、地圖或米奇頭，尖端或正面朝向船頭 (Forward)。"
           }
@@ -463,7 +463,7 @@ const TRIP_DATA = {
           icon: "utensils",
           details: {
             info: "費用: 餐點免費，建議給小費 (USD 1-2)",
-            location: "Room Service (客房服務)",
+            location: "Disney Cruise Room Service",
             transport: "打電話到客房服務點餐。",
             tips: "Mickey Premium Ice Cream Bar 在樂園一支要好幾塊美金，船上無限吃！適合玩累了在房間穿睡衣吃。"
           }
@@ -476,7 +476,7 @@ const TRIP_DATA = {
           icon: "clapperboard",
           details: {
             info: "地點: Buena Vista Theatre",
-            location: "Buena Vista Theatre",
+            location: "Buena Vista Theatre Disney Cruise",
             transport: "依據甲板圖前往電影院。",
             tips: "2026年4月是春季檔期，有機會搶先看到最新的漫威或皮克斯電影 (通常還有 3D 版)！"
           }
@@ -489,7 +489,7 @@ const TRIP_DATA = {
           icon: "ticket",
           details: {
             info: "截止時間: 最後一晚 22:00 前需將行李放門口",
-            location: "房門口走廊",
+            location: "Marina Bay Cruise Centre",
             transport: "船員協助搬運大行李下船。",
             tips: "廣播會通知：「持有 XX 標籤的旅客現在可以下船了」。請依照您的角色標籤行動，不要提早去擠。"
           }
@@ -521,7 +521,7 @@ const TRIP_DATA = {
           icon: "hotel",
           details: {
             info: "入住時間: 15:00",
-            location: "The Robertson House (1 Unity St)", 
+            location: "The Robertson House by The Crest Collection", 
             transport: "搭乘 Grab 或計程車前往飯店。",
             tips: "預計車資約 SGD 20-30。可先寄放行李，輕裝前往吃午餐"
           }
@@ -546,7 +546,7 @@ const TRIP_DATA = {
           icon: "camera",
           details: {
             info: "佛牙寺: 07:00 - 17:00",
-            location: "Buddha Tooth Relic Temple",
+            location: "Buddha Tooth Relic Temple and Museum",
             transport: "從 Maxwell 步行即可抵達，佛牙寺就在對面。",
             tips: "進入寺廟需穿著覆蓋肩膀與膝蓋的服裝"
           }
@@ -590,7 +590,7 @@ const TRIP_DATA = {
           icon: "coffee",
           details: {
             info: "營業時間: 07:30 - 19:00",
-            location: "Tiong Bahru Bakery (Fort Canning)",
+            location: "Tiong Bahru Bakery Fort Canning",
             transport: "從飯店步行約 10 分鐘即可抵達 Fort Canning 分店。",
             tips: "必點原味可頌 (Croissant) 與 Kouign-Amann"
           }
@@ -603,7 +603,7 @@ const TRIP_DATA = {
           icon: "navigation",
           details: {
             info: "方式: 輕軌 / 纜車 / 步行",
-            location: "VivoCity Station",
+            location: "VivoCity",
             transport: "從 Fort Canning 站 (DT20) 搭乘藍線至 牛車水站 (DT19)，轉乘紫線至 港灣站 (NE1)。",
             tips: "VivoCity 3樓可搭乘 Sentosa Express 輕軌"
           }
@@ -628,7 +628,7 @@ const TRIP_DATA = {
           icon: "ticket",
           details: {
             info: "展覽: 需事先購票",
-            location: "Resorts World Sentosa",
+            location: "Harry Potter: Visions of Magic Singapore",
             tips: "建議預留 1.5 - 2 小時體驗時間"
           }
         },
@@ -640,7 +640,7 @@ const TRIP_DATA = {
           icon: "utensils",
           details: {
             info: "營業時間: 11:00 - 22:00",
-            location: "Good Old Days (Beach Station)",
+            location: "Good Old Days Food Court (Sentosa)",
             transport: "位於 Beach Station 旁，搭乘 Sentosa Express 或海灘接駁車皆可抵達。",
             tips: "二樓有冷氣座位，傍晚用餐可順便看時光之翼水舞秀場地。"
           }
@@ -652,7 +652,7 @@ const TRIP_DATA = {
           desc: "走過吊橋前往「亞洲大陸最南端」，享受海風與椰林。",
           details: {
             info: "開放時間: 海灘全天開放",
-            location: "Palawan Beach",
+            location: "Palawan Beach Sentosa",
             transport: "再次搭乘 Sentosa Express 至 Beach Station，轉乘海灘接駁車。",
             tips: "吊橋是著名打卡點，日落時分最美"
           }
@@ -664,8 +664,8 @@ const TRIP_DATA = {
           desc: "移動至烏節路 Orchard Road 商圈逛街。",
           icon: "shopping",
           details: {
-            info: "商場: ION, Takashimaya, Paragon",
-            location: "Orchard Road",
+            info: "商場: ION Orchard",
+            location: "ION Orchard",
             transport: "返回港灣站 (NE1)，搭乘紫線至 多美歌站 (NE6) 轉乘紅線至 烏節站 (NS22)。",
             tips: "ION Sky 觀景台若有消費憑據可兌換入場"
           }
@@ -686,7 +686,7 @@ const TRIP_DATA = {
           details: {
             info: "建議: 班機起飛前 3-4 小時抵達",
             location: "Singapore Changi Airport",
-            transport: "從 Fort Canning 站 (DT20) 搭乘藍線至 Expo 站 (DT35)，轉乘綠線機場支線至樟宜機場站 (CG2)。",
+            transport: "從 Fort Canning 站 (DT20) 搭乘藍線至 Expo 站 (DT35)，轉乘機場支線至樟宜機場站 (CG2)。",
             tips: "預留充足時間逛 Jewel (星耀樟宜)"
           }
         },
@@ -698,7 +698,7 @@ const TRIP_DATA = {
           icon: "plane",
           details: {
             info: "櫃檯: 第二航廈第 12 號櫃檯",
-            location: "Changi Airport Terminal 2 Row 12",
+            location: "Changi Airport Terminal 2",
             tips: "起飛前 3 小時開放報到，完成後可前往 Jewel"
           }
         },
@@ -721,8 +721,8 @@ const TRIP_DATA = {
           desc: "於 SATS Premier Lounge 休息，探索轉機區花園。",
           icon: "coffee",
           details: {
-            info: "位置: 第二航廈出境大廳 3 樓",
-            location: "SATS Premier Lounge T2",
+            info: "位置: SATS Premier Lounge Terminal 2",
+            location: "SATS Premier Lounge T2 Singapore",
             tips: "經過證照查驗後左轉往登機區 E 方向，搭乘電扶梯往 3 樓"
           }
         },
@@ -771,6 +771,13 @@ const IconWrapper = ({ type }) => {
 // 行程卡片元件
 const TimelineItem = ({ item, isLast }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  // 優化搜尋字串，移除標題前綴並合併位置
+  const getSearchUrl = () => {
+    const cleanTitle = item.title.replace(/^(晚餐|飯店 Check-in|午餐|早餐|散步|前往)[:：]\s*/, "");
+    const query = `${cleanTitle} ${item.details.location}`;
+    return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+  };
 
   return (
     <div className="relative pl-8 pb-8 group">
@@ -840,7 +847,7 @@ const TimelineItem = ({ item, isLast }) => {
                             <div className="flex-1">
                                 <span className="block text-emerald-200 text-xs uppercase tracking-wider mb-0.5">位置</span>
                                 <a 
-                                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.details.location)}`}
+                                    href={getSearchUrl()}
                                     target="_blank" 
                                     rel="noopener noreferrer"
                                     onClick={(e) => e.stopPropagation()} 
